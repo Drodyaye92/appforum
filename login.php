@@ -1,7 +1,8 @@
 <?php 
-  require_once('connexion.php');
-
-  if(isset($_POST['envoyer'])){
+require_once('config.php');
+require_once('getconnect.php');
+  require_once('logtraitement.php');
+ /* if(isset($_POST['envoyer'])){
     $lastName = $_POST['lastName'];
     $firstName = $_POST['firstName'];
     $email = $_POST['email'];
@@ -20,7 +21,7 @@
     $q->bindParam(':roles',$role);
     $q->execute();
     }
-      }  
+      } */ 
 ?>
 
       <!DOCTYPE html>
@@ -46,12 +47,12 @@
         <form action="" method="POST">
         <div class="form">
             <div class="tab-tete">
-               <div class="active"><button>login</button></div>
-               <div><button> sign up</button> </div>
+               <div class=" active btn btn-primary" onclick="showLog();">login</div>
+               <div class="btn btn-primary" onclick="showLog();" <?php echo $action ?> >  sign up </div>
              </div>
       </div>
     </div>
-        <div class="tab-contenu">
+        <div class="tab-contenu" id="log">
             <div class="tab-corp active">
               <div class="form-element">
                 <input type="email" class="form-control  w-75" placeholder="Email" name="" >
@@ -60,11 +61,11 @@
                 <input type="password" class="form-control  w-75" placeholder="Mot de passe" name="">
               </div>
               <div class="form-element">
-                <button>Connexion</button>
+                <input type="submit" name="connect" value="Connexion">
               </div>
         </div>
         </form>
-        <div class="tab-corp">
+        <div class="tab-corp" id="inscrit">
                     <form action="" method="POST">
                     
               <div class="form-element">
@@ -101,8 +102,29 @@
        <h4>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet doloremque nostrum asperiores aliquam inventore autem odio, ipsum nihil, ipsam ea ipsa earum neque magni quas sapiente velit. Harum, suscipit eius?Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam facere neque, animi et vero provident id unde aliquid ad cupiditate sequi nobis autem iure sit facilis excepturi, laborum quas tenetur?Lorem ipsum dolor sit amet consectetur, adipisicing elit. Placeat autem quia inventore cum dolores officia fuga, quam repellendus voluptates neque! Aut libero praesentium illum. Nemo dolores distinctio saepe enim possimus?Lorem ipsum, dolor sit amet consectetur adipisicing elit. Consequatur id laboriosam accusamus repellendus reprehenderit provident quidem? Ea a itaque, nostrum assumenda perspiciatis facilis! Natus dolore veniam repellat suscipit quisquam dolores.</h4>
    </section>
    </section>
+  <!-- <script>
+       let login = document.getElementById('log');
+       let inscr = document.getElementById('inscrit');
+
+       
+       inscr.style.display = "none";
+
+       function showLog(){
+           if(inscr.style.display == "block"){
+            inscr.style.display = "none";
+            login.style.display = "block";
+           }
+       }
+       function showform(){
+           if(log.style.display == "block"){
+            login.style.display = "none";
+            inscr.style.display = "block";
+           }
+       }
+
+   </script>-->
 
    
-   <script src="styles/app.js"></script>
+  <script src="styles/app.js"></script>
 </body>
 </html>

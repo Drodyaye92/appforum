@@ -28,11 +28,11 @@
       </div> 
       </form>  
    </section>
-   <section class=" col-lg-6 col-md-6 col-mx-12 gauche">
-   <div class="form-element">
-<input type="text" class="form-control w-50" placeholder="keyboard" name="role">
-   <button type="submit" class="w-15" name="envoyer">search</button>
-<button type="submit" class="w-15 bg-danger" name="envoyer">log out</button>
+   <section class=" col-lg-8 col-md-8 col-mx-12 gauche">
+   <div class="form-element row m-5">
+<input type="text" class="formcontrol w-50" placeholder="keyboard" name="role">
+   <button type="submit" class="w-10 " name="envoyer">search</button>
+<button type="submit" class="w-10 bg-danger" name="envoyer">log out</button>
    </div>
 <?php
     $bdd = new PDO("mysql:host=localhost;dbname=developpeur","root", "");
@@ -46,29 +46,48 @@
         $nbre = $result->rowCount();
         ?>
 
-        <h4 class="text-center text-uppercase text-danger border bg-white">La table comprend <?= $nbre ?> developpeurs enregistrées</h4>
-       <table class="m-auto">
-       <tr class="border bg-white w-75">
-            <th class="text-center text-uppercase w-75">lastName</th>
-            <th class="text-center text-uppercase w-75">firstName&nbsp;</th>
-            <th class="text-center text-uppercase w-75">email</th>
-            <th class="text-center text-uppercase w-75">userrole</th>
+        <h4 class="text-center text-uppercase text-danger border bg-white m-3">La table comprend <?= $nbre ?> developpeurs enregistrées</h4>
+       <table class="m-auto w-100 border-bg-white">
+       <tr class="border bg-white ">
+            <th class="text-center text-uppercase ">lastName</th>
+            <th class="text-center text-uppercase ">firstName&nbsp;</th>
+            <th class="text-center text-uppercase ">email</th>
+            <th class="text-center text-uppercase">userrole</th>
         </tr>
 
         <?php
     while($data = $result->fetch()){
         ?>
-        <tr>
-            <td> <?=  $data["lastName"] ?></td>
-            <td> <?=  $data["firstName"] ?></td>
-            <td> <?=  $data["email"] ?></td>
-            <td> <?=  $data["userrole"] ?></td>
+        <tr class="lines border bg-white">
+            <td><h6>  <?= $data["lastName"] ?></h6></td>
+    
+            <td><h6>  <?=  $data["firstName"] ?></h6> </td>
+    
+            <td> <h6> <?=  $data["email"] ?> </h6> </td>
+    
+            <td> <h6> <?=  $data["userrole"] ?> </h6> </td>
+
         </tr>
+
+       
+        
         <?php
     }
         ?>
        </table>
+       <div><h4 class="text-center text-uppercase text-danger border bg-white m-3">La table comprend <?= $nbre ?> developpeurs en ligne</h4>
+        <table class="m-auto w-100 border-bg-white">
+       <tr class="border bg-white ">
+            <th class="text-center text-uppercase ">lastName</th>
+            <th class="text-center text-uppercase ">firstName&nbsp;</th>
+            <th class="text-center text-uppercase ">email</th>
+            <th class="text-center text-uppercase">userrole</th>
+        </tr>
+        </table></div>
    </section>
+   <section>
+   
+</section>
        <?php  
     }
 ?>

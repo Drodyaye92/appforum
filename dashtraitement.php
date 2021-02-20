@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FORUM</title>
     <link rel="stylesheet" href="styles/style.css">
+    <link rel="stylesheet" href="dash.css">
     <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="bootstrap/js/bootstrap.min.js">
 </head>

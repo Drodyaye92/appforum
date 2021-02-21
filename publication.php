@@ -1,3 +1,7 @@
+<?php 
+
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,7 +14,7 @@
 </head>
 <body>
 
-section class="container-fluid">
+<section class="container-fluid">
    <section class="row">
        <section class=" col-lg-4 col-md-4 col-mx-12 gauche">
            <div class="cote"> 
@@ -31,67 +35,43 @@ section class="container-fluid">
   
            </div>
         </section> 
-<section class="col-lg-8 col-md-8 col-sm-12">
-<div class="login centre_forum">
-        <h3 class="text-uppercase font-weight-bold">Registration</h3>
-       <table>
-          <form action="" method="post">
-          <tr>
-          <td> <input type="text" name="firstname" placeholder="firstname" required="required" class="font-weight-bold"/></td>
-          </tr>
-           
-            <tr>
-          <td> <input type="text" name="lastname" placeholder="lastname" required="required" class="font-weight-bold"/>
-            </td>
-          </tr>
-           <tr>
-          <td><input type="email" name="email" placeholder="email" required="required"  class="font-weight-bold"/></td>
-          </tr>
-            
-            <tr>
-          <td><input type="password" name="mdp" placeholder="password" required="required" class="font-weight-bold"/></td>
-          </tr>
-          <tr>
-          <td><input type="password" name="conf_mdp" placeholder="password" required="required"  class="font-weight-bold"/></td>
-          </tr>
-          <tr>
-          <td><input type="password" name="role" placeholder="role" required="required"  class="font-weight-bold"/></td>
-          </tr>
-            
-            <tr>
-          <td><button type="submit" class="btn btn-primary btn-block btn-large">S'inscrire</button></td>
-          </tr>
-            
-          </form>
-        </table>
-    </div>
-
-    <div> 
-   <table>
+<section class ="col-lg-8 col-md-8 col-sm-12 border-bg-"> 
+ 
+<div>
+        <h3 class="text-center">Publier vos POSTS</h3>
+</div>     
+    
+     
+   <table class=" w-100">
       
-       <form>
-       <tr>
-       <td>
+       <form class="w-100">
+       <tr >
+          <td>
            <label for=""> email</label>
-       </td>
-          <td><input type="" name="email" placeholder="" required="required"  class="font-weight-bold"/></td>
+          </td>
+       </tr>
+        <tr class="w-100">
+          <td><input type="" name="email" placeholder="" required="required"  class="font-weight-bold w-100"/></td>
         </tr>
          
        <tr>
        <td>
           <label for=""> message</label>
        </td>
-          <td> <textarea type="text" name="" placeholder="message" required="required"  class="font-weight-bold"> </textarea></td>
+      </tr>
+      <tr>
+          <td> <textarea type="text" name="" placeholder="message" required="required"  class="font-weight-bold w-100"> </textarea></td>
        </tr>
             
          <tr>
-          <td><button type="submit" class="btn btn-primary btn-block btn-large">Send</button></td>
+          <td><button type="submit" class="btn btn-primary btn-block btn-large w-100">Send</button></td>
          </tr>
          </form>
       
    </table>
-    </div>
 
+    </section>
+    </section>
     </section>
 </body>
 </html>

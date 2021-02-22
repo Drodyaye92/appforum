@@ -1,6 +1,39 @@
 <?php 
+require_once('connexion.php');
+
+if(isset($_POST['send'])){
+    $email =htmlspecialchars( $_POST['email']);
+    $message_pub =htmlspecialchars ($_POST['message_pub']);
+
+    if($email!="" && $message_pub !="" ){
 
 
+                    $q = $bdd->prepare('SELECT * FROM publication WHERE email = ?  message_pub = ?  date_pub = ?');
+                    $q->execute(array($email,$message_pub,$date_pub));
+                   $row = $q->rowCount();
+                   if($row == 0){
+                      
+                           $insert= $bdd->prepare("INSERT INTO publication (email,message_pub,date_pub) VALUES(:email,:message,:date,:)");
+                           $insert->execute(array(
+                            'email'=> $email,
+                            'message'=>$message_pub,
+                            'date'=>$date_pub,
+                           ));
+                          
+                    
+                       
+
+                   }
+
+                
+
+
+
+
+            
+    }
+        
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">

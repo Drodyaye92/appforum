@@ -1,4 +1,5 @@
 <?php
+session_start();
 require_once ('connexion.php');
  if(isset($_POST['envoyer'])){
     $lastName = htmlspecialchars($_POST['lastName']);

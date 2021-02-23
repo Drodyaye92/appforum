@@ -67,12 +67,12 @@ require_once('connexion.php');
           <tr>
           <td>
          <select  class="formcontrol w-100"  type="text" name="categorie" >
-        <option selected>HTML 5</option>
+        <option>HTML 5</option>
         <option>CSS 3 </option>
         <option>PHP</option>
          <option>JQUERIE</option>
          <option>BOOTSTRAP</option>
-         <option>SYMPHONY</option>MATERIALIZE<option><option>SGBD</option><option>PYTHON</option>
+         <option>SYMPHONY</option>MATERIALIZE<option selected><option>SGBD</option><option>PYTHON</option>
          <option>RUBIS</option>
         </select>
          </td> 

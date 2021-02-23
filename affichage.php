@@ -1,6 +1,25 @@
 <?php
-require_once ('connexion.php')
+session_start();
+require_once ('connexion.php');
+$bdd = new PDO("mysql:host=localhost;dbname=developpeur","root", "");
+    $bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
+?>
+<?php 
+require_once('connexion.php');
+if(isset($_POST['push'])){
+      $email = $_POST['email'];
+      $reponse = htmlspecialchars($_POST['reponse']);
+      $date_com= date("h:i:sa");
+      $insert=$bdd->prepare("INSERT INTO commentaire(email,reponse,date_com) VALUES(?,?,?)");
+      $insert->execute(array(
+         $email,
+         $reponse,
+         $date_com
+         
+    ));
+  
+}
 
 ?>
 <!DOCTYPE html>
@@ -12,7 +31,7 @@ require_once ('connexion.php')
     <link rel="stylesheet" href="styles/home.css">
     <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="bootstrap/js/bootstrap.min.js">
-    
+  
 </head>
 <body>
 <section class="container-fluid">
@@ -47,8 +66,7 @@ require_once ('connexion.php')
 </div>
 
 <?php
-    $bdd = new PDO("mysql:host=localhost;dbname=developpeur","root", "");
-    $bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    
 
     $result = $bdd->query("SELECT * FROM publication ORDER BY categorie");
 
@@ -59,24 +77,56 @@ require_once ('connexion.php')
     }
         ?>
  <h4 class="text-center text-uppercase text-danger border bg-white m-3">La table comprend <?= $nbre ?> publication enregistrées</h4>
-       <table class="m-auto w-100 border-bg-white">
-       <tr class="border bg-white ">
-            <th class="text-center text-uppercase ">categorie</th>
-            <th class="text-center text-uppercase "> message&nbsp;</th>
-            <th class="text-center text-uppercase ">date_pub</th>
-            
-        </tr>
+      
+
         <?php
     while($data = $result->fetch()){
         ?>
-        <tr class="lines border bg-white">
-            <td><h6>  <?= $data["categorie"] ?></h6></td>
+        <div class=" d-block">
+           <div class="blocus">  <h4>  <?= $data["categorie"] ?></h4></div>
     
-            <td><h6>  <?=  $data["message_pub"] ?></h6> </td>
+           <div class="blocu"> <h5>  <?=  $data["message_pub"] ?></h5></div> 
     
-            <td> <h6> <?=  $data["date_pub"] ?> </h6> </td>
+            <div class="bloc"> <p> <?=  $data["date_pub"] ?> </p> </div>
+            
+        </div>
+        
 
-        </tr>
+        <!-- Button to Open the Modal -->
+
+        
+<button type="button" class="bloc btn btn-primary" data-toggle="modal" data-target="#myModal">
+  Repondre
+</button>
+
+<!-- The Modal -->
+<div class="modal" id="myModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h4 class="modal-title">Entrez une reponse</h4>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+
+      <!-- Modal body -->
+      <form action="" method="POST">
+      <div class="modal-body">
+        <input type="email" class="formcontrol w-100 mb-4" placeholder="email" name="email">
+        <textarea name="reponse" id="" cols="30" rows="10" class="w-100"></textarea>
+      </div>
+
+      <!-- Modal footer -->
+      <div class="modal-footer">
+
+        <button type="submit" class="btn btn-primary" name="push" >Envoyer</button>
+      </div>
+      </form>
+    </div>
+  </div>
+</div>
+
         <?php
     }
         ?>
@@ -86,5 +136,8 @@ require_once ('connexion.php')
 
     </section>
 </section> 
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 </body>
 </html>

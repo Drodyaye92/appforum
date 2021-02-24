@@ -12,7 +12,7 @@
 <body>
 <section class="container-fluid">
    <section class="row">
-   <section class=" col-lg-4 col-md-4 col-mx-12 gauche">
+   <section class=" col-lg-5 col-md-5 col-mx-12 gauche">
    <div class="cote"> 
            <div>
                <img src="images/lacsoftforum.png" alt="" width="350px">
@@ -29,7 +29,7 @@
       </div> 
       </form>  
    </section>
-   <section class=" col-lg-8 col-md-8 col-mx-12 gauche">
+   <section class=" col-lg-7 col-md-7 col-mx-12 gauche">
    <div class="form-element row m-5">
 <input type="text" class="formcontrol w-50" placeholder="keyboard" name="role">
    <button type="submit" class="w-10 " name="envoyer">search</button>

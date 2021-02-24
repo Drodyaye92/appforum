@@ -68,7 +68,7 @@ if(isset($_POST['envoyer'])){
 <body>
 section class="container-fluid">
    <section class="row">
-       <section class=" col-lg-4 col-md-4 col-mx-12 gauche">
+       <section class=" col-lg-5 col-md-5 col-mx-12 gauche">
            <div class="cote"> 
             <div>
                <img src="images/lacsoftforum.png" alt="" width="350px">
@@ -87,7 +87,7 @@ section class="container-fluid">
   
            </div>
         </section> 
-<section class="col-lg-8 col-md-8 col-sm-12">
+<section class="col-lg-7 col-md-7 col-sm-12">
 <div class="login centre_forum">
         <h3 class="text-uppercase font-weight-bold">Registration</h3>
        <table>

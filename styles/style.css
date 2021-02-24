@@ -1,83 +1,83 @@
-                          .cote {
-                              background: -webkit-linear-gradient(to top, #4A569D, #DC2424);
-                              background: linear-gradient(to top, #4A569D, #DC2424);
-                          }
-                          
-                          .gauche {
-                              position: absolute;
-                          }
-                          
-                          .tab-tete {
-                              margin-left: 100px;
-                          }
-                          
-                          .tab-tete div button {
-                              margin-left: 20px;
-                              margin-top: 25px;
-                              border-radius: 30px;
-                              width: 200px;
-                              height: 45px;
-                          }
-                          
-                          .form .tab-contenu .form-element button:hover {
-                              background: red;
-                              height: auto;
-                          }
-                          
-                          .form .tab-contenu>div.active {
-                              display: inline-block;
-                          }
-                          
-                          .tab-contenu {
-                              background-color: rgba(153, 143, 143, 0.644);
-                              border: solid 1px whitesmoke;
-                          }
-                          
-                          .form .tab-contenu>div {
-                              display: none;
-                          }
-                          
-                          .active {
-                              overflow: hidden;
-                          }
-                          
-                          .form-control {
-                              border-radius: 30px;
-                              height: 45px;
-                              margin-left: 60px;
-                              margin-top: 15px;
-                          }
-                          
-                          .form-element button {
-                              width: 190px;
-                              height: 40px;
-                              margin-left: 120px;
-                              margin-top: 15px;
-                              border-radius: 30px;
-                          }
-                          
-                          .droite {
-                              position: absolute;
-                              margin-left: 40 px;
-                              margin-top: 250px;
-                              border: solid 1px whitesmoke;
-                              background-color: rgba(211, 197, 180, 0.377);
-                              max-width: 400px;
-                              height: max-content;
-                              text-align: center;
-                              font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-                          }
-                          
-                          .soft {
-                              margin-top: 10px;
-                          }
-                          
-                          .bar {
-                              width: 90px;
-                              background-color: blue;
-                              border-radius: 10px;
-                          }
-                          
-                          .bare {
-                              border-radius: 10px;
-                          }
+  .cote {
+      background: -webkit-linear-gradient(to top, #4A569D, #DC2424);
+      background: linear-gradient(to top, #4A569D, #DC2424);
+  }
+  
+  .gauche {
+      position: absolute;
+  }
+  
+  .tab-tete {
+      margin-left: 100px;
+  }
+  
+  .tab-tete div button {
+      margin-left: 20px;
+      margin-top: 25px;
+      border-radius: 30px;
+      width: 200px;
+      height: 45px;
+  }
+  
+  .form .tab-contenu .form-element button:hover {
+      background: red;
+      height: auto;
+  }
+  
+  .form .tab-contenu>div.active {
+      display: inline-block;
+  }
+  
+  .tab-contenu {
+      background-color: rgba(153, 143, 143, 0.644);
+      border: solid 1px whitesmoke;
+  }
+  
+  .form .tab-contenu>div {
+      display: none;
+  }
+  
+  .active {
+      overflow: hidden;
+  }
+  
+  .form-control {
+      border-radius: 30px;
+      height: 45px;
+      margin-left: 60px;
+      margin-top: 15px;
+  }
+  
+  .form-element button {
+      width: 190px;
+      height: 40px;
+      margin-left: 120px;
+      margin-top: 15px;
+      border-radius: 30px;
+  }
+  
+  .droite {
+      position: absolute;
+      margin-left: 40 px;
+      margin-top: 250px;
+      border: solid 1px whitesmoke;
+      background-color: rgba(211, 197, 180, 0.377);
+      max-width: 500px;
+      height: max-content;
+      text-align: center;
+      font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  }
+  
+  .soft {
+      margin-top: 10px;
+  }
+  
+  .bar {
+      width: 90px;
+      background-color: blue;
+      border-radius: 10px;
+  }
+  
+  .bare {
+      border-radius: 10px;
+  }

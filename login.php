@@ -38,10 +38,10 @@ require_once('getconnect.php');
    <section class="container-fluid">
   <section class="row">
 
-   <section class=" col-lg-=4 col-md-4 col-sm-12 gauche">
+   <section class=" col-lg-5 col-md-5 col-sm-12 gauche">
         <div class="cote"> 
            <div>
-               <img src="images/lacsoftforum.png" alt="" width="350px">
+               <img src="images/lacsoftforum.png" alt="" width="300px">
            </div> 
         
         <form action="" method="POST">
@@ -96,7 +96,7 @@ require_once('getconnect.php');
    </section>
 
 
-   <section class=" col-lg-8 col-md-8 col-sm-12 droite"> 
+   <section class=" col-lg-7 col-md-7 col-sm-12 droite"> 
    
    <h1 class="soft">Lac Soft Forum</h1>
        <h4>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet doloremque nostrum asperiores aliquam inventore autem odio, ipsum nihil, ipsam ea ipsa earum neque magni quas sapiente velit. Harum, suscipit eius?Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam facere neque, animi et vero provident id unde aliquid ad cupiditate sequi nobis autem iure sit facilis excepturi, laborum quas tenetur?Lorem ipsum dolor sit amet consectetur, adipisicing elit. Placeat autem quia inventore cum dolores officia fuga, quam repellendus voluptates neque! Aut libero praesentium illum. Nemo dolores distinctio saepe enim possimus?Lorem ipsum, dolor sit amet consectetur adipisicing elit. Consequatur id laboriosam accusamus repellendus reprehenderit provident quidem? Ea a itaque, nostrum assumenda perspiciatis facilis! Natus dolore veniam repellat suscipit quisquam dolores.</h4>

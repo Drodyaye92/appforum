@@ -30,7 +30,7 @@ require_once('connexion.php');
 
 <section class="container-fluid">
    <section class="row">
-       <section class=" col-lg-4 col-md-4 col-mx-12 gauche">
+       <section class=" col-lg-5 col-md-5 col-mx-12 gauche">
            <div class="cote"> 
             <div>
                <img src="images/lacsoftforum.png" alt="" width="350px">
@@ -49,7 +49,7 @@ require_once('connexion.php');
   
            </div>
         </section> 
-<section class ="col-lg-8 col-md-8 col-sm-12 border-bg-"> 
+<section class ="col-lg-7 col-md-7 col-sm-12 border-bg-"> 
  
 <div>
         <h3 class="text-center">Publier vos POSTS</h3>
@@ -83,7 +83,7 @@ require_once('connexion.php');
        </td>
       </tr>
       <tr>
-          <td> <textarea type="text" name="message" placeholder="message"  class="font-weight-bold w-100"> </textarea></td>
+          <td> <textarea type="text" name="message" placeholder="message"  class=" w-100"> </textarea></td>
        </tr>
             
          <tr>

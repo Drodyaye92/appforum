@@ -1,12 +1,20 @@
 <?php
 session_start();
 require_once ('connexion.php');
-$bdd = new PDO("mysql:host=localhost;dbname=developpeur","root", "");
-    $bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
 ?>
 <?php 
-require_once('connexion.php');
+require_once ('connexion.php');
+if(isset($_POST['push'])){
+  $email =$_POST['email'];
+ // $date_com = date("h:i:sa");
+  $reponse = htmlspecialchars($_POST['reponse']);
+  $insert=$bdd->prepare("INSERT INTO commentaire(email,reponse)VALUES(?,?)");
+  $insert->execute(array($email,$reponse));
+
+}
+
+/*require_once('connexion.php');
 if(isset($_POST['push'])){
       $email = $_POST['email'];
       $reponse = htmlspecialchars($_POST['reponse']);
@@ -15,13 +23,13 @@ if(isset($_POST['push'])){
       $insert->execute(array(
          $email,
          $reponse,
-         $date_com
-         
+         $date_com     
     ));
   
 }
-
+*/
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -36,7 +44,7 @@ if(isset($_POST['push'])){
 <body>
 <section class="container-fluid">
    <section class="row">
-       <section class=" col-lg-4 col-md-4 col-mx-12 gauche">
+       <section class=" col-lg-5 col-md-5 col-mx-12 gauche">
            <div class="cote"> 
             <div>
                <img src="images/lacsoftforum.png" alt="" width="350px">
@@ -55,46 +63,35 @@ if(isset($_POST['push'])){
   
            </div>
         </section> 
-        <section class="col-lg-8 col-md-8 col-sm-12">
+        <section class="col-lg-7 col-md-7 col-sm-12">
 <div > 
     <h3 class="foru text-center"> FORUM </h3>
  <div class="text-right"><button  type="submit" name="send"><a href="publication.php">Creer un Topic</a></button></div>
 
 <div class=""><input type="text" name="Recherche" placeholder="Rechercher" required="required" class="font-weight-bold"/> 
 
-<button  type="submit" name="envoyer" > SEND </button></div>
+<button  type="submit" name="envoyer"> SEND </button></div>
 </div>
 
 <?php
-    
-
-    $result = $bdd->query("SELECT * FROM publication ORDER BY categorie");
-
-    if (!$result){
+    $resulta = $bdd->query("SELECT * FROM publication ORDER BY categorie");
+    if (!$resulta){
         echo"la recuperation a echoue";
     }else{
-        $nbre = $result->rowCount();
+        $nbre = $resulta->rowCount();
     }
-        ?>
- <h4 class="text-center text-uppercase text-danger border bg-white m-3">La table comprend <?= $nbre ?> publication enregistrées</h4>
-      
+?>
 
-        <?php
-    while($data = $result->fetch()){
+ <h4 class="text-center text-uppercase text-dark border bg-info m-3">La table comprend <?= $nbre ?> publication enregistrées</h4>
+ <?php
+    while($datas = $resulta->fetch()){
         ?>
         <div class=" d-block">
-           <div class="blocus">  <h4>  <?= $data["categorie"] ?></h4></div>
+           <div class="blocus">  <h4>  <?= $datas["categorie"] ?></h4></div>
     
-           <div class="blocu"> <h5>  <?=  $data["message_pub"] ?></h5></div> 
-    
-            <div class="bloc"> <p> <?=  $data["date_pub"] ?> </p> </div>
-            
-        </div>
-        
-
-        <!-- Button to Open the Modal -->
-
-        
+           <div class="blocu"> <h5>  <?=  $datas["message_pub"] ?></h5></div> 
+       </div>
+        <!-- Button to Open the Modal -->     
 <button type="button" class="bloc btn btn-primary" data-toggle="modal" data-target="#myModal">
   Repondre
 </button>
@@ -126,14 +123,28 @@ if(isset($_POST['push'])){
     </div>
   </div>
 </div>
+<?php
+require_once ('connexion.php');
+$email =$_POST['email'];
+$reponse =$_POST['reponse'];
+$result = $bdd->query("SELECT * FROM commentaire WHERE id_pub='".$datas['id_pub']."'ORDER BY email ");
 
-        <?php
-    }
+?>
+<?php
+    while($data = $result->fetch()){
         ?>
 
-
-        </section>
-
+<div class=" d-block">
+           <div class="blocus"> <h4><?= $data["email"] ?></h4></div>
+           <div class="blocu"> <h5><?= $data["reponse"] ?></h5></div>    
+</div>
+<?php
+}
+?>
+<?php 
+    }
+?>
+    </section>
     </section>
 </section> 
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>

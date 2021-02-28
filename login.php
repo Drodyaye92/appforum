@@ -2,35 +2,41 @@
 require_once('config.php');
 require_once('getconnect.php');
   require_once('logtraitement.php');
- /* if(isset($_POST['envoyer'])){
-    $lastName = $_POST['lastName'];
-    $firstName = $_POST['firstName'];
-    $email = $_POST['email'];
-    $mdp = $_POST['mdp'];
-    $mdp_conf = $_POST['mdp1'];
-    $role = $_POST['role'];
-    $password = password_hash($mdp,PASSWORD_DEFAULT);
 
-      if($lastName!="" && $firstName !="" && $email !="" && $mdp !="" && $mdp_conf !="" && $role !=""){
-        $q= $bdd->prepare("INSERT INTO dev (lastName,firstName,email,mdp,userrole) VALUES(:lastn,:firstn,:mail,:mdep,:roles)");
+  $rule= 'admin';
+  $reqrole = $bdd->prepare("SELECT * FROM dev WHERE userrole=?");
+  //$reqrole->execute(array($rule));
+  $roleExist = $reqrole->rowCount();
 
-    $q->bindParam(':lastn',$lastName);
-    $q->bindParam(':firstn',$firstName);
-    $q->bindParam(':mail',$email);
-    $q->bindParam(':mdep',$password);
-    $q->bindParam(':roles',$role);
-    $q->execute();
-    }
-      } */ 
-?>
+  $verif =VerifyAdmin($roleExist);
+  switch ($verif) {
+ 
+     case 0:
+         $action= 'hidden';
+         
+        
+ 
+       break;
+     case 1:
+         $action= ''; 
+         
+        
+       break;
+     }
+     ?>
 
-      <!DOCTYPE html>
+ 
+
+
+     
+ 
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FORUM</title>
-    <link rel="stylesheet" href="styles/style.css">
+    <link rel="stylesheet" href="styles/style1.css">
     <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="bootstrap/js/bootstrap.min.js">
 </head>
@@ -41,88 +47,90 @@ require_once('getconnect.php');
    <section class=" col-lg-5 col-md-5 col-sm-12 gauche">
         <div class="cote"> 
            <div>
-               <img src="images/lacsoftforum.png" alt="" width="300px">
+               <img src="images/lacsoftforum.png" alt="" width="350px">
            </div> 
         
-        <form action="" method="POST">
+        
         <div class="form">
-            <div class="tab-tete">
-               <div class=" active btn btn-primary" onclick="showLog();">login</div>
-               <div class="btn btn-primary" onclick="showLog();" <?php echo $action ?> >  sign up </div>
+            <div class=" p-3">
+               <div class=" btn btn-primary w-100 mb-4" onclick="showConnexionForm();">login</div>
+               <div class="btn btn-primary w-100" onclick="showInscritForm();" <?php echo $action; ?> >  sign up </div>
              </div>
       </div>
     </div>
-        <div class="tab-contenu" id="log">
-            <div class="tab-corp active">
-              <div class="form-element">
-                <input type="email" class="form-control  w-75" placeholder="Email" name="" >
-              </div>
-              <div class="form-element">
-                <input type="password" class="form-control  w-75" placeholder="Mot de passe" name="">
-              </div>
-              <div class="form-element">
-                <input type="submit" name="connect" value="Connexion">
-              </div>
-        </div>
-        </form>
-        <div class="tab-corp" id="inscrit">
-                    <form action="" method="POST">
-                    
-              <div class="form-element">
-                    <input type="text" class="form-control w-75" placeholder="Lastname" name="lastName" >
-              </div>
-              <div class="form-element">
-                    <input type="text" class="form-control  w-75" placeholder="firstname" name="firstName" >
-              </div>
-              <div class="form-element">
-                    <input type="email" class="form-control  w-75" placeholder="Email" name="email">
-              </div>
-              <div class="form-element">
-                    <input type="password" class="form-control  w-75" placeholder="Mot de passe" name="mdp">
-              </div>
-              <div class="form-element">
-                    <input type="password" class="form-control  w-75" placeholder="Confirmation de mot de passe" name="mdp1" >
-              </div>
-              <div class="form-element">
-                    <input type="text" class="form-control  w-75" placeholder="role" name="role">
-              </div>
-              <div class="form-element">
-                    <button type="submit" name="envoyer">Inscrire</button>
-              </div>
-              
-                    </form>
-                    </div>
+    <form action="" method="post">
+        <div class="w-100 mt-5" id="log">
+            <div class="login w-75  mx-auto bg-light mb-5">
+                  <div class="mot bg-danger">
+                    <h4 class=" w-50 d-block mx-auto mb-4 text-white">Connexion</h4>
+                  </div>
+                  <div class="form p-2">
+                    <input type="email" class="form-control mb-3 " placeholder="Email" name="email" >
+                    <input type="password" class="form-control mb-3" placeholder="Mot de passe" name="mdp">
+                    <input class="w-75 mx-auto d-block btn btn-danger" type="submit" name="connect" value="Connexion">
+                  </div>
             </div>
+        </div>    
+      </form>
+      <form action="" method="post">
+        <div class=" login w-75 w-75  mx-auto bg-light mb-5" id="inscrit" <?php echo $action; ?>>  
+          <div class="mot bg-danger">
+            <h4 class=" w-50 d-block mx-auto mb-4 text-white">Inscription</h4>
+          </div>
+          <div class="form p-2">
+            <input type="text" class="form-control mb-3" placeholder="Lastname" name="lastName" >
+            <input type="text" class="form-control mb-3" placeholder="firstname" name="firstName" >
+            <input type="email" class="form-control mb-3" placeholder="Email" name="email">
+            <input type="password" class="form-control mb-3" placeholder="Mot de passe" name="mdp">
+            <input type="password" class="form-control mb-3" placeholder="Confirmation de mot de passe" name="mdp1" >
+            <select name="userrole" id="" class="mx-auto d-block mb-3">
+              <optgroup>
+                <option value="choix">-- Role --</option>
+                <option value="admin">Admin</option>
+                <option value="developpeur"> Developpeur</option>
+              </optgroup>
+            </select>
+            <input class="w-75 mx-auto d-block btn btn-danger" type="submit" name="signup" value="Sign Up"> 
+          </div>
+        </div>
+      </form>
+  
    </section>
 
 
-   <section class=" col-lg-7 col-md-7 col-sm-12 droite"> 
+   <section class=" col-lg-7 col-md-7 col-sm-12 droite">
    
-   <h1 class="soft">Lac Soft Forum</h1>
-       <h4>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet doloremque nostrum asperiores aliquam inventore autem odio, ipsum nihil, ipsam ea ipsa earum neque magni quas sapiente velit. Harum, suscipit eius?Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam facere neque, animi et vero provident id unde aliquid ad cupiditate sequi nobis autem iure sit facilis excepturi, laborum quas tenetur?Lorem ipsum dolor sit amet consectetur, adipisicing elit. Placeat autem quia inventore cum dolores officia fuga, quam repellendus voluptates neque! Aut libero praesentium illum. Nemo dolores distinctio saepe enim possimus?Lorem ipsum, dolor sit amet consectetur adipisicing elit. Consequatur id laboriosam accusamus repellendus reprehenderit provident quidem? Ea a itaque, nostrum assumenda perspiciatis facilis! Natus dolore veniam repellat suscipit quisquam dolores.</h4>
+      <div class="text w-75 mx-auto text-center">
+        <h1 class="font-weight-bold">Lac Soft Forum</h1>
+        <h4>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet doloremque nostrum asperiores aliquam inventore autem odio, ipsum nihil, ipsam ea ipsa earum neque magni quas sapiente velit. Harum, suscipit eius?Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam facere neque, animi et vero provident id unde aliquid ad cupiditate sequi nobis autem iure sit facilis excepturi, laborum quas tenetur?Lorem ipsum dolor sit amet consectetur, adipisicing elit. Placeat autem quia inventore cum dolores officia fuga, quam repellendus voluptates neque! Aut libero praesentium illum. Nemo dolores distinctio saepe enim possimus?Lorem ipsum, dolor sit amet consectetur adipisicing elit. Consequatur id laboriosam accusamus repellendus reprehenderit provident quidem? Ea a itaque, nostrum assumenda perspiciatis facilis! Natus dolore veniam repellat suscipit quisquam dolores.</h4>
+      </div>
+   
    </section>
    </section>
-  <!-- <script>
+   </section>
+   <script>
        let login = document.getElementById('log');
        let inscr = document.getElementById('inscrit');
 
        
-       inscr.style.display = "none";
+       login.style.display = "block";
 
-       function showLog(){
-           if(inscr.style.display == "block"){
-            inscr.style.display = "none";
-            login.style.display = "block";
-           }
-       }
-       function showform(){
-           if(log.style.display == "block"){
-            login.style.display = "none";
+       function showInscritForm(){
+           if(login.style.display == "block"){
+             login.style.display = "none";
             inscr.style.display = "block";
+            
+           }
+       }
+       function showConnexionForm(){
+           if(inscr.style.display == "block"){
+             inscr.style.display = "none";
+            login.style.display = "block";
+            
            }
        }
 
-   </script>-->
+   </script>
 
    
   <script src="styles/app.js"></script>

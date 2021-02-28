@@ -5,11 +5,11 @@ if(isset($_POST['envoyer'])){
   $firstName = htmlspecialchars($_POST['firstName']);
   $email =htmlspecialchars( $_POST['email']);
   $mdp = htmlspecialchars($_POST['mdp']);
-  $mdp_conf = htmlspecialchars($_POST['mdp1']);
-  $role =htmlspecialchars( $_POST['role']);
+ // $mdp_conf = htmlspecialchars($_POST['mdp1']);
+  $userrole =htmlspecialchars( $_POST['userrole']);
   
 
-  if($lastName!="" && $firstName !="" && $email !="" && $mdp !="" && $mdp_conf !="" && $role !=""){
+  if($lastName!="" && $firstName !="" && $email !="" && $mdp !="" &&  $userrole !=""){
       
   
       if($row == 0){ 
@@ -29,10 +29,10 @@ if(isset($_POST['envoyer'])){
                               $q->bindParam(':firstn',$firstName);
                               $q->bindParam(':mail',$email);
                               $q->bindParam(':mdep',$password);
-                              $q->bindParam(':roles',$role);
+                              $q->bindParam(':roles',$userrole);
                               $q->execute();
                        
-                          header('Location:login.php?reg_err=success');
+                          header('Location:affichage.php');
                           die();
                       }
                      
@@ -77,27 +77,27 @@ section class="container-fluid">
          <div action="" method="POST">
          <div class="form">
             <div class="tab-tete">
-               <div class="active"><button>See profile</button></div>
-               <div><button> FORUM</button> </div>
-               <div><button> Dashbord</button> </div>
-               <div><button> Register</button> </div>
+               <div class="active"><button><a href ="dastraitement.php">See profile</a></button></div>
+               <div><button><a href="publication.php">FORUM</a> </button> </div>
+               <div><button><a href="dashtraitement.php"> Dashbord</a></button> </div>
+               <div><button> <a href="registration.php">Register</a></button> </div>
             </div>
          </div> 
          </div>  
   
            </div>
         </section> 
-<section class="col-lg-7 col-md-7 col-sm-12">
+<section class="col-lg-7 col-md-7 col-sm-12 text-center">
 <div class="login centre_forum">
         <h3 class="text-uppercase font-weight-bold">Registration</h3>
-       <table>
+       <table align="center">
           <form action="" method="post">
           <tr>
-          <td> <input type="text" name="firstname" placeholder="firstname" required="required" class="font-weight-bold"/></td>
+          <td> <input type="text" name="lastName" placeholder="lastNname" required="required" class="font-weight-bold"/></td>
           </tr>
            
             <tr>
-          <td> <input type="text" name="lastname" placeholder="lastname" required="required" class="font-weight-bold"/>
+          <td> <input type="text" name="firstName" placeholder="firstName" required="required" class="font-weight-bold"/>
             </td>
           </tr>
            <tr>
@@ -111,11 +111,11 @@ section class="container-fluid">
           <td><input type="password" name="conf_mdp" placeholder="password" required="required"  class="font-weight-bold"/></td>
           </tr>
           <tr>
-          <td><input type="password" name="role" placeholder="role" required="required"  class="font-weight-bold"/></td>
+          <td><input type="text" name="userrole" placeholder="role" required="required"  class="font-weight-bold"/></td>
           </tr>
             
             <tr>
-          <td><button type="submit" class="btn btn-primary btn-block btn-large">S'inscrire</button></td>
+          <td><button type="submit" class="btn btn-primary btn-block btn-large" name="envoyer">Inscrire</button></td>
           </tr>
             
           </form>

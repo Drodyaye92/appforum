@@ -1,0 +1,34 @@
+.cote {
+    background: -webkit-linear-gradient(to top, #4A569D, #DC2424);
+    background: linear-gradient(to top, #4A569D, #DC2424);
+}
+
+.login {
+    border-radius: 20px;
+    border: 1px solid red;
+}
+
+.login .mot {
+    border-radius: 20px 20px 0 0;
+}
+
+.cote2 {
+    height: 300px;
+    background-color: #4c8aaf;
+}
+
+.dash {
+    background: #e4e4e4;
+}
+
+.droite {
+    position: absolute;
+    margin-left: 40 px;
+    margin-top: 180px;
+    border: solid 1px whitesmoke;
+    background-color: rgba(211, 197, 180, 0.377);
+    max-width: 500px;
+    height: max-content;
+    text-align: center;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}

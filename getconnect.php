@@ -21,8 +21,8 @@
                     $_SESSION['user'] = $data['email'];
                     header('Location: dashbord.php');
                     die();
-                }else{ header('Location: index.php?login_err=password'); die(); }
-            }else{ header('Location: index.php?login_err=email'); die(); }
+                }else{ header('Location: registration.php'); die(); }
+            }else{ header('Location: dashtraitement.php'); die(); }
         }else{ header('Location: dashtraitement.php'); die(); }
     
 

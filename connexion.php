@@ -10,4 +10,8 @@
     catch(PDOException $e){
         echo "Erreur : ". $e->getMessage();
     }
+    
+    $pdostat = $bdd->prepare('SELECT * FROM dev');
+    $executeIsok = $pdostat->execute();
+    $det = $pdostat->fetchAll();
 ?>

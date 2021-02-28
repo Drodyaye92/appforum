@@ -13,9 +13,7 @@ require_once ('connexion.php');
      $reqrole->execute(array('$rolead'));
      $userrole_exist = $reqrole->rowCount();
 
- function VerifyAdmin($a){
-    
-     
+ function VerifyAdmin($a){ 
 
      if($a==1){
          return 0;
@@ -36,7 +34,7 @@ require_once ('connexion.php');
       break;
     case 1:
         $action= 'disabled'; 
-        echo "le resultat de la function est 1".$action;
+      
       break;
     }
     ?>

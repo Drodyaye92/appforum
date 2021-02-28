@@ -29,7 +29,7 @@
       </div> 
       </form>  
    </section>
-   <section class=" col-lg-7 col-md-7 col-mx-12 gauche">
+   <section class="col-lg-7 col-md-7 col-mx-12 gauche">
    <div class="form-element row m-5">
 <input type="text" class="formcontrol w-50" placeholder="keyboard" name="role">
    <button type="submit" class="w-10 " name="envoyer">search</button>

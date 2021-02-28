@@ -6,28 +6,17 @@ require_once ('connexion.php');
 <?php 
 require_once ('connexion.php');
 if(isset($_POST['push'])){
+  $reqt=$bdd->prepare("SELECT id_dev FROM commentaire WHERE id_pub (?,?,)"); 
   $email =$_POST['email'];
- // $date_com = date("h:i:sa");
+ $id_pub = date("h:i:sa");
   $reponse = htmlspecialchars($_POST['reponse']);
-  $insert=$bdd->prepare("INSERT INTO commentaire(email,reponse)VALUES(?,?)");
-  $insert->execute(array($email,$reponse));
+  $insert=$bdd->prepare("INSERT INTO commentaire(email,reponse,id_pub)VALUES(?,?,?)");
+  $insert->execute(array($email,$reponse,$id_pub));
 
 }
 
-/*require_once('connexion.php');
-if(isset($_POST['push'])){
-      $email = $_POST['email'];
-      $reponse = htmlspecialchars($_POST['reponse']);
-      $date_com= date("h:i:sa");
-      $insert=$bdd->prepare("INSERT INTO commentaire(email,reponse,date_com) VALUES(?,?,?)");
-      $insert->execute(array(
-         $email,
-         $reponse,
-         $date_com     
-    ));
-  
-}
-*/
+
+
 ?>
 
 <!DOCTYPE html>
@@ -78,68 +67,74 @@ if(isset($_POST['push'])){
     if (!$resulta){
         echo"la recuperation a echoue";
     }else{
-        $nbre = $resulta->rowCount();
+       // $nbre = $resulta->rowCount();
     }
 ?>
 
- <h4 class="text-center text-uppercase text-dark border bg-info m-3">La table comprend <?= $nbre ?> publication enregistrées</h4>
+ <h4 class="text-center text-uppercase text-dark border bg-info m-3">La table des publications enregistrées</h4>
  <?php
     while($datas = $resulta->fetch()){
-        ?>
+ ?>
         <div class=" d-block">
-           <div class="blocus">  <h4>  <?= $datas["categorie"] ?></h4></div>
-    
-           <div class="blocu"> <h5>  <?=  $datas["message_pub"] ?></h5></div> 
+           <div class="blo"> <p>  <?=  $datas["id_pub"] ?></p> 
+            <h4 class="blocus">  <?= $datas["categorie"]?></h4>
+        </div>
+           <div class="blocu"> <h5>  <?=  $datas["message_pub"] ?></h5>
+            <p class="bloc hidden">  <?= $datas["date_pub"] ?></p>
+        </div>
        </div>
-        <!-- Button to Open the Modal -->     
+       <form action="" method="POST">
+       <textarea name="reponse" id="" cols="30" rows="2" placeholder="veuillez entrer votre reponse" class="w-100"></textarea>
+       <button  type="submit" name="push" class="butt align-items-end bg-info"> envoyer </button>
+       </form>
+        <!-- Button to Open the Modal      
 <button type="button" class="bloc btn btn-primary" data-toggle="modal" data-target="#myModal">
   Repondre
 </button>
 
-<!-- The Modal -->
+ The Modal 
 <div class="modal" id="myModal">
   <div class="modal-dialog">
     <div class="modal-content">
 
-      <!-- Modal Header -->
+       Modal Header 
       <div class="modal-header">
         <h4 class="modal-title">Entrez une reponse</h4>
         <button type="button" class="close" data-dismiss="modal">&times;</button>
       </div>
 
-      <!-- Modal body -->
+       Modal body 
       <form action="" method="POST">
       <div class="modal-body">
         <input type="email" class="formcontrol w-100 mb-4" placeholder="email" name="email">
         <textarea name="reponse" id="" cols="30" rows="10" class="w-100"></textarea>
       </div>
 
-      <!-- Modal footer -->
+      Modal footer 
       <div class="modal-footer">
-
-        <button type="submit" class="btn btn-primary" name="push" >Envoyer</button>
+      
+        <button type="submit" class="btn btn-primary" name="push" >Envoyer</button>-->
       </div>
       </form>
     </div>
   </div>
 </div>
-<?php
-require_once ('connexion.php');
-$email =$_POST['email'];
+<?php 
+//require_once ('connexion.php');
+/*$email =$_POST['email'];
 $reponse =$_POST['reponse'];
-$result = $bdd->query("SELECT * FROM commentaire WHERE id_pub='".$datas['id_pub']."'ORDER BY email ");
+$reponse =$_POST['id_pub'];
+$result =$bdd->query("SELECT * FROM commentaire WHERE id_pub='".$datas['id_pub']."'ORDER BY email ");
 
-?>
-<?php
     while($data = $result->fetch()){
-        ?>
+?>
 
 <div class=" d-block">
            <div class="blocus"> <h4><?= $data["email"] ?></h4></div>
            <div class="blocu"> <h5><?= $data["reponse"] ?></h5></div>    
-</div>
-<?php
-}
+</div>*/
+
+//}
 ?>
 <?php 
     }

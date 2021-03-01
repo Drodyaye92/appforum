@@ -1,17 +1,15 @@
-<?php
-session_start();
-require_once ('connexion.php');
-
-?>
 <?php 
 require_once ('connexion.php');
-if(isset($_POST['push'])){
-  $reqt=$bdd->prepare("SELECT id_dev FROM commentaire WHERE id_pub (?,?,)"); 
-  $email =$_POST['email'];
- $id_pub = date("h:i:sa");
+if(isset($_POST['push'])){ 
+
+  $email = htmlspecialchars($_POST['email']);
+  $id_pub = date("h:i:sa");
   $reponse = htmlspecialchars($_POST['reponse']);
-  $insert=$bdd->prepare("INSERT INTO commentaire(email,reponse,id_pub)VALUES(?,?,?)");
-  $insert->execute(array($email,$reponse,$id_pub));
+  $insert=$bdd->prepare("INSERT INTO commentaire(email,reponse)VALUES(?,?)");
+  $insert->execute(array(
+                 $email,
+                 $reponse
+                  ));
 
 }
 
@@ -41,25 +39,25 @@ if(isset($_POST['push'])){
         
          <div action=" " method="POST">
          <div class="form">
-            <div class="tab-tete">
-               <div class="active"><button>See profile</button></div>
-               <div><button> FORUM</button> </div>
-               <div><button> Dashbord</button> </div>
-               <div><button> Register</button> </div>
+         <div class="tab-tete">
+               <div class="active"><button><a href ="commentaire.php">See profile</a></button></div>
+               <div><button><a href="publication.php">FORUM</a> </button> </div>
+               <div><button><a href="dashtraitement.php"> Dashbord</a></button> </div>
+               <div><button> <a href="registration.php">Register</a></button> </div>
             </div>
          </div> 
          </div>  
   
            </div>
         </section> 
-        <section class="col-lg-7 col-md-7 col-sm-12">
+        <section class=" droite col-lg-7 col-md-7 col-sm-12">
 <div > 
     <h3 class="foru text-center"> FORUM </h3>
  <div class="text-right"><button  type="submit" name="send"><a href="publication.php">Creer un Topic</a></button></div>
 
 <div class=""><input type="text" name="Recherche" placeholder="Rechercher" required="required" class="font-weight-bold"/> 
 
-<button  type="submit" name="envoyer"> SEND </button></div>
+<button type="submit" name="envoyer"> SEND </button></div>
 </div>
 
 <?php
@@ -77,68 +75,48 @@ if(isset($_POST['push'])){
  ?>
         <div class=" d-block">
            <div class="blo"> <p>  <?=  $datas["id_pub"] ?></p> 
-            <h4 class="blocus">  <?= $datas["categorie"]?></h4>
+            <h4 class="blocus"> <a href=" commentaire.php"> <?= $datas["categorie"]?></a></h4>
         </div>
            <div class="blocu"> <h5>  <?=  $datas["message_pub"] ?></h5>
             <p class="bloc hidden">  <?= $datas["date_pub"] ?></p>
         </div>
        </div>
-       <form action="" method="POST">
-       <textarea name="reponse" id="" cols="30" rows="2" placeholder="veuillez entrer votre reponse" class="w-100"></textarea>
-       <button  type="submit" name="push" class="butt align-items-end bg-info"> envoyer </button>
-       </form>
-        <!-- Button to Open the Modal      
+     
+      <!-- <textarea name="reponse" id="" cols="30" rows="2" placeholder="veuillez entrer votre reponse" class="w-100"></textarea>
+       <button  type="button" class="butt bg-info" data-toggle="modal" data-target="#myModal"> Commenter </button>-->
+           
 <button type="button" class="bloc btn btn-primary" data-toggle="modal" data-target="#myModal">
-  Repondre
-</button>
+  Commenter
+ </button>
 
- The Modal 
+  <!-- le modal-->
 <div class="modal" id="myModal">
   <div class="modal-dialog">
     <div class="modal-content">
-
-       Modal Header 
       <div class="modal-header">
         <h4 class="modal-title">Entrez une reponse</h4>
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
       </div>
-
-       Modal body 
       <form action="" method="POST">
-      <div class="modal-body">
+       <div class="modal-body">
         <input type="email" class="formcontrol w-100 mb-4" placeholder="email" name="email">
         <textarea name="reponse" id="" cols="30" rows="10" class="w-100"></textarea>
       </div>
-
-      Modal footer 
       <div class="modal-footer">
-      
-        <button type="submit" class="btn btn-primary" name="push" >Envoyer</button>-->
+       <button type="submit" class="btn btn-primary" name="push" >Envoyer</button>
       </div>
       </form>
     </div>
   </div>
 </div>
-<?php 
-//require_once ('connexion.php');
-/*$email =$_POST['email'];
-$reponse =$_POST['reponse'];
-$reponse =$_POST['id_pub'];
-$result =$bdd->query("SELECT * FROM commentaire WHERE id_pub='".$datas['id_pub']."'ORDER BY email ");
 
-    while($data = $result->fetch()){
-?>
-
-<div class=" d-block">
-           <div class="blocus"> <h4><?= $data["email"] ?></h4></div>
-           <div class="blocu"> <h5><?= $data["reponse"] ?></h5></div>    
-</div>*/
-
-//}
-?>
-<?php 
+      
+      <?php
     }
-?>
+    ?>
+    </div>
+  </div>
+</div>
+
     </section>
     </section>
 </section> 

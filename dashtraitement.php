@@ -20,12 +20,12 @@
         
         <form action="" method="POST">
         <div class="form">
-            <div class="tab-tete">
-               <div class="active"><button>See profile</button></div>
-               <div><button> FORUM</button> </div>
-               <div><button> Dashbord</button> </div>
-               <div><button> Register</button> </div>
-               </div>
+        <div class="tab-tete">
+               <div class="active"><button><a href ="commentaire.php">See profile</a></button></div>
+               <div><button><a href="publication.php">FORUM</a> </button> </div>
+               <div><button><a href="dashtraitement.php"> Dashbord</a></button> </div>
+               <div><button> <a href="registration.php">Register</a></button> </div>
+            </div>
       </div> 
       </form>  
    </section>

@@ -77,7 +77,7 @@ section class="container-fluid">
          <div action="" method="POST">
          <div class="form">
             <div class="tab-tete">
-               <div class="active"><button><a href ="dastraitement.php">See profile</a></button></div>
+               <div class="active"><button><a href ="commentaire.php">See profile</a></button></div>
                <div><button><a href="publication.php">FORUM</a> </button> </div>
                <div><button><a href="dashtraitement.php"> Dashbord</a></button> </div>
                <div><button> <a href="registration.php">Register</a></button> </div>
@@ -87,7 +87,7 @@ section class="container-fluid">
   
            </div>
         </section> 
-<section class="col-lg-7 col-md-7 col-sm-12 text-center">
+<section class=" droite col-lg-7 col-md-7 col-sm-12 text-center">
 <div class="login centre_forum">
         <h3 class="text-uppercase font-weight-bold">Registration</h3>
        <table align="center">

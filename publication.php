@@ -39,17 +39,19 @@ require_once('connexion.php');
          <div action=" " method="POST">
          <div class="form">
             <div class="tab-tete">
-               <div class="active"><button>See profile</button></div>
-               <div><button> FORUM</button> </div>
-               <div><button> Dashbord</button> </div>
-               <div><button> Register</button> </div>
+           
+               <div class="active"><button><a href ="commentaire.php">See profile</a></button></div>
+               <div><button><a href="publication.php">FORUM</a> </button> </div>
+               <div><button><a href="dashtraitement.php">Dashbord</a></button> </div>
+               <div><button> <a href="registration.php">Register</a></button> </div>
+            
             </div>
          </div> 
          </div>  
   
            </div>
         </section> 
-<section class ="col-lg-7 col-md-7 col-sm-12 border-bg-"> 
+<section class =" droite col-lg-7 col-md-7 col-sm-12 border-bg-"> 
  
 <div>
         <h3 class="text-center">Publier vos POSTS</h3>

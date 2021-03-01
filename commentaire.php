@@ -19,31 +19,31 @@
         
          <div action=" " method="POST">
          <div class="form">
-            <div class="tab-tete">
-               <div class="active"><button>See profile</button></div>
-               <div><button> FORUM</button> </div>
-               <div><button> Dashbord</button> </div>
-               <div><button> Register</button> </div>
+         <div class="tab-tete">
+               <div class="active"><button><a href ="commentaire.php">See profile</a></button></div>
+               <div><button><a href="publication.php">FORUM</a> </button> </div>
+               <div><button><a href="dashtraitement.php"> Dashbord</a></button> </div>
+               <div><button> <a href="registration.php">Register</a></button> </div>
             </div>
          </div> 
          </div>  
   
            </div>
         </section> 
-<section class ="col-lg-7 col-md-7 col-sm-12>
+<section class =" droite col-lg-7 col-md-7 col-sm-12>
 
-
+<h4> VOS COMMENTAIRES</h4>
 
 
 <?php
-    //require_once 'connexion.php';
+    require_once 'connexion.php';
 
     $result = $bdd->query("SELECT * FROM commentaire ORDER BY email");
 
     if (!$result){
         echo"la recuperation a echoue";
     }else{
-        $nbre = $result->rowCount();
+        //$nbre = $result->rowCount();
     }
         ?>
  
@@ -58,11 +58,12 @@
     while($data = $result->fetch()){
         ?>
         <div class=" d-block">
-           <div class="blocus">  <h4>  <?= $data["email"] ?></h4></div>
+           <div class="blocus">  <p>  <?= $data["email"] ?></p></div>
     
-           <div class="blocu"> <h5>  <?=  $data["reponse"] ?></h5></div> 
-    
-            <div class="bloc"> <p> <?=  $data["date_com"] ?> </p> </div>
+           <div class="blocu">
+                <h5>  <?=  $data["reponse"] ?></h5> 
+                <p class="bloc"> <?=  $data["date_com"] ?> </p> 
+          </div>
             
         </div>
         <?php 
